@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성은  MyBatis내에서 원하는 SQL문을 찾아서 실핼할 때 동작 -->
+
+<mapper namespace="com.spring.mvcboard.mappers.article.ArticleMapper">
+	<insert id="create">
+		INSERT INTO tbl_article(
+			article_no
+		   ,title
+		   ,content
+		   ,writer
+		   ,regdate
+		   ,viewcnt
+		) VALUES (
+			#{articleNo}
+		   ,#{title}
+		   ,#{content}
+		   ,#{writer}
+		   ,#{regDate}
+		   ,#{viewCnt}
+		)
+	</insert>
+	
+	<select id="read" resultMap="ArticleResultMap">
+		SELECT
+			article_no
+		   ,title
+		   ,content
+		   ,writer
+		   ,regdate
+		   ,viewcnt
+		FROM
+			tbl_article
+		WHERE article_no = #{articleNo}
+	</select>
+	
+	<update id="update">
+		UPDATE tbl_article
+		SET
+			title = #{title}
+			, content = #{content}
+		WHERE			
+			article_no = #{articleNo}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM tbl_article
+		WHERE article_no = #{articleNo}
+	</delete>
+	
+	<select id="listAll" resultMap="ArticleResultMap">
+		<![CDATA[
+		SELECT
+			article_no
+		   ,title
+		   ,content
+		   ,writer
+		   ,regdate
+		   ,viewcnt
+		FROM tbl_article
+		WHERE article_no > 0
+		ORDER BY article_no DESC, regdate DESC
+		]]>
+	</select>
+	
+	<select id="listPaging" resultMap="ArticleResultMap">
+        <![CDATA[
+        SELECT
+            article_no,
+            title,
+            content,
+            writer,
+            regdate,
+            viewcnt
+        FROM tbl_article
+        WHERE article_no > 0
+        ORDER BY article_no DESC, regdate DESC
+        LIMIT #{page}, 10
+        ]]>
+    </select>
+	
+	<select id="listCriteria" resultMap="ArticleResultMap">
+		<![CDATA[
+		SELECT
+			article_no
+		   ,title
+		   ,content
+		   ,writer
+		   ,regdate
+		   ,viewcnt
+		FROM tbl_article
+		WHERE article_no > 0
+		ORDER BY article_no DESC, regdate DESC
+		LIMIT #{pageStart}, #{perPageNum} 
+		]]>
+	</select>
+	
+	
+	<!-- 자바 객체의 필드변수명과 DB컬럼명이 불일치할 경우 발생하는 문제를 처리하기 위함 -->
+	<resultMap id="ArticleResultMap" type="ArticleVO">
+		<!-- 테이블의 pk 값을 id로 설정 -->
+		<id property="articleNo" column="article_no"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="writer" column="writer"/>
+		<result property="regDate" column="regdate"/>
+		<result property="viewCnt" column="viewcnt"/>
+	</resultMap>
+	
+</mapper>
