@@ -19,4 +19,7 @@ public interface ArticleService {
 	List<ArticleVO> listAll() throws Exception;
 	
 	List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
+	
+    //페이징 처리를 위한 전체 게시글의 갯수
+    int countArticles(Criteria criteria) throws Exception;
 }

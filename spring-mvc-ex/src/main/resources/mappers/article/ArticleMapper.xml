@@ -97,6 +97,16 @@
 		]]>
 	</select>
 	
+	<!-- 전체 게시글 갯수 -->
+	<select id="countArticles" resultType="int">
+		<![CDATA[
+		SELECT
+			count(article_no)
+		FROM tbl_article
+		WHERE article_no > 0
+		]]>
+	</select>
+	
 	
 	<!-- 자바 객체의 필드변수명과 DB컬럼명이 불일치할 경우 발생하는 문제를 처리하기 위함 -->
 	<resultMap id="ArticleResultMap" type="ArticleVO">

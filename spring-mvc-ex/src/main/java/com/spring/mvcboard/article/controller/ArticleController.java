@@ -116,13 +116,15 @@ public class ArticleController {
 		return "/article/list_criteria";
 	}
 	
+	//페이징 처리 
 	@RequestMapping(value = "/listPaging", method = RequestMethod.GET)
 	public String listPaging(Model model, Criteria criteria) throws Exception{
 		logger.info("listPage ...");
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCriteria(criteria);
-		pageMaker.setTotalCount(1000);
+		
+		pageMaker.setTotalCount(articleService.countArticles(criteria));
 		
 		model.addAttribute("articles", articleService.listCriteria(criteria));
 		model.addAttribute("pageMaker", pageMaker);
