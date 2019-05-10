@@ -43,5 +43,8 @@
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"  destroy-method="clearCache">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
     </bean>
+    
+    <!-- 기본패키지 설정 -->
+	<context:component-scan base-package="com.spring.mvcboard" />
 		
 </beans>

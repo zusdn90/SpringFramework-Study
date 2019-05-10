@@ -2,6 +2,8 @@ package com.spring.mvcboard.article.persistence;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,10 +14,10 @@ import com.spring.mvcboard.commons.paging.Criteria;
 @Repository
 public class ArticleDAOImpl implements ArticleDAO{
 	
-	@Autowired
+	@Inject
 	private static final String NAMESPACE = "com.spring.mvcboard.mappers.article.ArticleMapper";
 	
-	@Autowired
+	@Inject
 	private final SqlSession sqlSession;
 	
 	public ArticleDAOImpl(SqlSession sqlSession) {
