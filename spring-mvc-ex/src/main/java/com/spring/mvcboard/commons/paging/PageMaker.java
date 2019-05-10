@@ -1,5 +1,8 @@
 package com.spring.mvcboard.commons.paging;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 //게시판 하단의 페이지 번호 출력
 public class PageMaker {
 
@@ -87,7 +90,7 @@ public class PageMaker {
     public Criteria getCriteria() {
         return criteria;
     }
-
+    
     @Override
     public String toString() {
         return "PageMaker{" +
@@ -99,5 +102,15 @@ public class PageMaker {
                 ", displayPageNum=" + displayPageNum +
                 ", criteria=" + criteria +
                 '}';
+    }
+    
+    public String makeQuery(int page) {
+    	
+    	UriComponents uriComponents = UriComponentsBuilder.newInstance()
+    			.queryParam("page", page)
+    			.queryParam("perPageNum", criteria.getPerPageNum())
+    			.build();
+    	
+       return uriComponents.toUriString();
     }
 }
