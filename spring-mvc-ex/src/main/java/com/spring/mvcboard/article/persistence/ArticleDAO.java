@@ -7,6 +7,7 @@ import com.spring.mvcboard.commons.paging.Criteria;
 
 public interface ArticleDAO {
 	
+	
 	void create(ArticleVO articleVO) throws Exception;
 	
 	ArticleVO read(Integer articleNo) throws Exception;
@@ -18,8 +19,8 @@ public interface ArticleDAO {
 	List<ArticleVO> listAll() throws Exception;
 	
 	//페이징 처리
-	List<ArticleVO> listPaging(int page) throws Exception;
-	
-	List<ArticleVO> listCriteria(Criteria creiteria) throws Exception;
+    List<ArticleVO> listPaging(int page) throws Exception;
+
+    List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
 	
 }

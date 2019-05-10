@@ -12,6 +12,7 @@ import com.spring.mvcboard.commons.paging.Criteria;
 @Repository
 public class ArticleDAOImpl implements ArticleDAO{
 	
+	@Autowired
 	private static final String NAMESPACE = "com.spring.mvcboard.mappers.article.ArticleMapper";
 	
 	@Autowired

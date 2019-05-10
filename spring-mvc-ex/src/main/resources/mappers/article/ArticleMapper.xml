@@ -14,11 +14,11 @@
 		   ,regdate
 		   ,viewcnt
 		) VALUES (
-			#{articleNo}
+			NO_SEQ.NEXTVAL
 		   ,#{title}
 		   ,#{content}
 		   ,#{writer}
-		   ,#{regDate}
+		   ,sysdate
 		   ,#{viewCnt}
 		)
 	</insert>
@@ -76,8 +76,8 @@
             viewcnt
         FROM tbl_article
         WHERE article_no > 0
-        ORDER BY article_no DESC, regdate DESC
-        LIMIT #{page}, 10
+        AND ROWNUM >= #{page} AND ROWNUM <= 10
+        ORDER BY article_no DESC, regdate DESC        
         ]]>
     </select>
 	
@@ -92,8 +92,8 @@
 		   ,viewcnt
 		FROM tbl_article
 		WHERE article_no > 0
+		AND ROWNUM >= #{pageStart} AND ROWNUM <= #{perPageNum}
 		ORDER BY article_no DESC, regdate DESC
-		LIMIT #{pageStart}, #{perPageNum} 
 		]]>
 	</select>
 	
