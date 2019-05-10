@@ -109,27 +109,30 @@ public class ArticleController {
 		return "redirect:/article/list";
 	}
 	
-	@RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
-	public String listCriteria(Model model, Criteria criteria) throws Exception{
-		logger.info("listCriteria ...");
-		model.addAttribute("article",articleService.listCriteria(criteria));
-		return "/article/list_criteria";
-	}
+	 @RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
+	 public String listCriteria(Model model, Criteria criteria) throws Exception {
+	        
+		 logger.info("listCriteria ...");
+	     model.addAttribute("articles", articleService.listCriteria(criteria));
+	        
+	     return "/article/list_criteria";
+	        
+	 }
 	
 	//페이징 처리 
-	@RequestMapping(value = "/listPaging", method = RequestMethod.GET)
-	public String listPaging(Model model, Criteria criteria) throws Exception{
-		logger.info("listPage ...");
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCriteria(criteria);
-		
-		pageMaker.setTotalCount(articleService.countArticles(criteria));
-		
-		model.addAttribute("articles", articleService.listCriteria(criteria));
-		model.addAttribute("pageMaker", pageMaker);
-		
-		return "/article/list_paging";
+	 @RequestMapping(value = "/listPaging", method = RequestMethod.GET)
+	 public String listPaging(Model model, Criteria criteria) throws Exception {
+	        
+		 logger.info("listPaging ...");
+
+	     PageMaker pageMaker = new PageMaker();
+	     pageMaker.setCriteria(criteria);
+	     pageMaker.setTotalCount(articleService.countArticles(criteria));
+
+	     model.addAttribute("articles", articleService.listCriteria(criteria));
+	     model.addAttribute("pageMaker", pageMaker);
+
+	     return "/article/list_paging";
 	}
 
 }

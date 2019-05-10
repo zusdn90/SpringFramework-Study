@@ -60,14 +60,18 @@ public class ArticleDAOImpl implements ArticleDAO{
 		}
 		
 		page = (page -1)*10;
+		
 		return sqlSession.selectList(NAMESPACE + ".listPaging", page);
 	}
 
 	@Override
-	public List<ArticleVO> listCriteria(Criteria criteria) throws Exception {
-		
+    public List<ArticleVO> listCriteria(Criteria criteria) throws Exception {
+        
 		return sqlSession.selectList(NAMESPACE + ".listCriteria", criteria);
-	}
+		
+    }
+	
+	
 
 	@Override
 	public int countArticles(Criteria criteria) throws Exception {

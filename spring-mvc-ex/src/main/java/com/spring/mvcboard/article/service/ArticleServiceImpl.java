@@ -49,12 +49,13 @@ public class ArticleServiceImpl implements ArticleService{
 		
 		return articleDAO.listAll();
 	}
-
+	
 	@Override
-	public List<ArticleVO> listCriteria(Criteria criteria) throws Exception {
-		
+    public List<ArticleVO> listCriteria(Criteria criteria) throws Exception {
+        
 		return articleDAO.listCriteria(criteria);
-	}
+        
+    }
 
 	@Override
 	public int countArticles(Criteria criteria) throws Exception {
