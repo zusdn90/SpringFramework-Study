@@ -27,6 +27,7 @@ public class ArticleController {
 	@Inject
 	public ArticleController(ArticleService articleService) {
 		this.articleService = articleService;
+		
 	}
 	
 	/***************
@@ -108,6 +109,8 @@ public class ArticleController {
 			
 		return "redirect:/article/list";
 	}
+	
+	
 	
 	 @RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
 	 public String listCriteria(Model model, Criteria criteria) throws Exception {

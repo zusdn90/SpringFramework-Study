@@ -2,7 +2,7 @@
 <html>
 <%@ include file="include/head.jsp" %>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini layout-boxed">
 	<div class="wrapper">
 		
 		<!-- main header -->

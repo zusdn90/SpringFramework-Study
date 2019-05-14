@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <html>
-<%@ include file="../include/head.jsp" %>
+<%@ include file="../../../include/head.jsp" %>
 <script src="/js/jquery/jquery-1.11.2.min.js"></script>
 
 <script type="text/javascript">
@@ -32,10 +32,10 @@
 	<div class="wrapper">
 		
 		<!-- main header -->
-		<%@ include file="../include/main_header.jsp" %>
+		<%@ include file="../../../include/main_header.jsp" %>
 		
 		<!-- left area -->
-		<%@ include file="../include/left_column.jsp" %>
+		<%@ include file="../../../include/left_column.jsp" %>
 		
 		
 		<div class="content-wrapper">
@@ -96,10 +96,10 @@
 		</div>
 		
 		<!-- footer area -->
-		<%@ include file="../include/main_footer.jsp" %>
+		<%@ include file="../../../include/main_footer.jsp" %>
 		
 	</div>
 	
-	<%@ include file="../include/plugin_js.jsp" %>
+	<%@ include file="../../../include/plugin_js.jsp" %>
 </body>
 </html>
