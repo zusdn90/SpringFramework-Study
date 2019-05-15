@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.mvcboard.article.domain.ArticleVO;
 import com.spring.mvcboard.commons.paging.Criteria;
+import com.spring.mvcboard.commons.paging.SearchCriteria;
 
 @Repository
 public class ArticleDAOImpl implements ArticleDAO{
@@ -71,12 +72,22 @@ public class ArticleDAOImpl implements ArticleDAO{
 		
     }
 	
-	
-
 	@Override
 	public int countArticles(Criteria criteria) throws Exception {
  
 		return sqlSession.selectOne(NAMESPACE + ".countArticles", criteria);
+	}
+
+	@Override
+	public List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE + ".listSearch", searchCriteria);
+	}
+
+	@Override
+	public int countSearchArticles(SearchCriteria searchCriteria) throws Exception {
+
+		return sqlSession.selectOne(NAMESPACE + ".countSearchArticles", searchCriteria);
 	}
 
 

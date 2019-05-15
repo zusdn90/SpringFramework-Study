@@ -14,11 +14,11 @@
 		   ,regdate
 		   ,viewcnt
 		) VALUES (
-			NO_SEQ.NEXTVAL
+			#{articleNo}
 		   ,#{title}
 		   ,#{content}
 		   ,#{writer}
-		   ,sysdate
+		   ,#{regDate}
 		   ,#{viewCnt}
 		)
 	</insert>
@@ -76,28 +76,28 @@
             viewcnt
         FROM tbl_article
         WHERE article_no > 0
-        AND ROWNUM >= #{page} AND ROWNUM <= 10
-        ORDER BY article_no DESC, regdate DESC        
+        ORDER BY article_no DESC, regdate DESC
+        LIMIT #{page}, 10
         ]]>
     </select>
 	
 	<select id="listCriteria" resultMap="ArticleResultMap">
-		<![CDATA[
-		SELECT
-			article_no
-		   ,title
-		   ,content
-		   ,writer
-		   ,regdate
-		   ,viewcnt
-		FROM tbl_article
-		WHERE article_no > 0
-		AND ROWNUM >= #{pageStart} AND ROWNUM <= #{perPageNum}
-		ORDER BY article_no DESC, regdate DESC
-		]]>
-	</select>
-	
-	<!-- 전체 게시글 갯수 -->
+        <![CDATA[
+        SELECT
+            article_no,
+            title,
+            content,
+            writer,
+            regdate,
+            viewcnt
+        FROM tbl_article
+        WHERE article_no > 0
+        ORDER BY article_no DESC, regdate DESC
+        LIMIT #{pageStart}, #{perPageNum}
+        ]]>
+    </select>
+    
+    <!-- 전체 게시글 갯수 -->
 	<select id="countArticles" resultType="int">
 		<![CDATA[
 		SELECT

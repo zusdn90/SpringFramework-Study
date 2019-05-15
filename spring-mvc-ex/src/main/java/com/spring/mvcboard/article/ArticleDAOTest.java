@@ -30,8 +30,8 @@ public class ArticleDAOTest {
 
         for (int i = 1; i <= 1000; i++) {
             ArticleVO articleVO = new ArticleVO();
-            articleVO.setTitle(i+ "번째 글 제목입니다...");
-            articleVO.setContent(i+ "번재 글 내용입니다...");
+            articleVO.setTitle(i+ " title...");
+            articleVO.setContent(i+ "content...");
             articleVO.setWriter("user0"+(i%10));
 
             articleDAO.create(articleVO);

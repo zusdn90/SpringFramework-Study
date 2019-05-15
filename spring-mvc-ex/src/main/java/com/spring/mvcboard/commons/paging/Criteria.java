@@ -11,7 +11,7 @@ public class Criteria {
 	//기본 생성자, 현재 페이지를 1, 페이지 당 출력할 게시글의 갯수를 10으로 기본세팅
 	public Criteria() {
         this.page = 1;
-        this.perPageNum = 20;
+        this.perPageNum = 10;
     }
 
     // page validation 체크

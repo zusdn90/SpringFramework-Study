@@ -17,20 +17,10 @@
 	<!-- 1. pom.xml 에서 받아온  MyBatis 설정  DataSource log4jdbc-log4j2 설정-->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"></property>
-		<property name="username" value="MATRIX"></property>
-		<property name="password" value="MATRIX"></property>
-	</bean>
-	<!--  
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8"></property>
 		<property name="username" value="admin"></property>
 		<property name="password" value="admin"></property>
 	</bean>
-	-->
-	
-	
 	
 	<!-- SqlSessionFactory 설정 : dataSource를 참조, mybatis-config.xml 경로설정 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -43,8 +33,8 @@
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"  destroy-method="clearCache">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
     </bean>
-    
-    <!-- 기본패키지 설정 -->
+		
+	<!-- 기본패키지 설정 -->
 	<context:component-scan base-package="com.spring.mvcboard" />
 		
 </beans>
