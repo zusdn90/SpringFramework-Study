@@ -106,6 +106,70 @@
 		WHERE article_no > 0
 		]]>
 	</select>
+    
+    <!-- 검색처리 -->
+    <select id="listSearch" resultMap="ArticleResultMap">
+        <![CDATA[
+        SELECT
+            article_no,
+            title,
+            content,
+            writer,
+            regdate,
+            viewcnt
+        FROM tbl_article
+        WHERE article_no > 0
+        ]]>
+        	<include refid="search"></include>
+        <![CDATA[
+        ORDER BY article_no DESC, regdate DESC
+        LIMIT #{pageStart}, #{perPageNum}
+        ]]>
+    </select>
+    
+    <select id="countSearchArticles" resultType="int">
+		<![CDATA[
+		SELECT
+			count(article_no)
+		FROM tbl_article
+		WHERE article_no > 0
+		]]>
+		<include refid="search"></include>
+	</select>
+  	
+  	
+  	<sql id="search">
+  		<if test="searchType != null">
+  			<if test="searchType == 't'.toString()">
+  				AND title LIKE CONCAT('%', #{keyword}, '%')
+  			</if>
+  			<if test="searchType == 'c'.toString()">
+  				AND title LIKE CONCAT('%', #{keyword}, '%')
+  			</if>
+  			<if test="searchType == 'w'.toString()">
+  				AND title LIKE CONCAT('%', #{keyword}, '%')
+  			</if>
+  			<if test="searchType == 'tc'.toString()">
+  				AND( 
+  					title LIKE CONCAT('%', #{keyword}, '%')
+  					OR content LIKE CONCAT('%', #{keyword}, '%')
+  				)
+  			</if>
+  			<if test="searchType == 'cw'.toString()">
+  				AND( 
+  					title LIKE CONCAT('%', #{keyword}, '%')
+  					OR writer LIKE CONCAT('%', #{keyword}, '%')
+  				)
+  			</if>
+  			<if test="searchType == 'tcw'.toString()">
+  				AND( 
+  					title LIKE CONCAT('%', #{keyword}, '%')
+  					OR content LIKE CONCAT('%', #{keyword}, '%')
+  					OR writer LIKE CONCAT('%', #{keyword}, '%')
+  				)
+  			</if>
+  		</if>	
+  	</sql>
 	
 	
 	<!-- 자바 객체의 필드변수명과 DB컬럼명이 불일치할 경우 발생하는 문제를 처리하기 위함 -->

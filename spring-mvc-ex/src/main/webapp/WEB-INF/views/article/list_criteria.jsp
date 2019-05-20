@@ -19,7 +19,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                게시판
+               	 게시판
                 <small>목록페이지(페이징)</small>
             </h1>
             <ol class="breadcrumb">

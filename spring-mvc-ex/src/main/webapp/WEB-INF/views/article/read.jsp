@@ -19,7 +19,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                게시판
+                	게시판
                 <small>조회페이지</small>
             </h1>
             <ol class="breadcrumb">
@@ -51,6 +51,10 @@
                     <div class="box-footer">
                         <form role="form" method="post">
                             <input type="hidden" name="articleNo" value="${article.articleNo}">
+                            <input type="hidden" name="page" value="${searchCriteria.page}">
+                            <input type="hidden" name="perPageNum" value="${searchCriteria.perPageNum}">
+                            <input type="hidden" name="searchType" value="${searchCriteria.searchType}">
+                            <input type="hidden" name="keyword" value="${searchCriteria.keyword}">
                         </form>
                         <button type="submit" class="btn btn-primary listBtn"><i class="fa fa-list"></i> 목록</button>
                         <div class="pull-right">
@@ -70,6 +74,7 @@
     <%@ include file="../include/main_footer.jsp"%>
 
 </div>
+
 <!-- ./wrapper -->
 <%@ include file="../include/plugin_js.jsp"%>
 <script>
@@ -77,16 +82,18 @@
         var formObj = $("form[role='form']");
         console.log(formObj);
         $(".modBtn").on("click", function () {
-            formObj.attr("action", "/article/modify");
+            formObj.attr("action", "/article/paging/search/modify");
             formObj.attr("method", "get");
             formObj.submit();
         });
         $(".delBtn").on("click", function () {
-           formObj.attr("action", "/article/remove");
+           formObj.attr("action", "/article/paging/search/remove");
            formObj.submit();
         });
         $(".listBtn").on("click", function () {
-           self.location = "/article/list"
+        	formObj.attr("/article/paging/search/list");
+        	formObj.attr("method","get");
+        	formObj.submit();
         });
     });
 </script>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <script src="/js/jquery/jquery-1.11.2.min.js"></script>
+
 <html>
 
 <%@ include file="../../include/head.jsp"%>
@@ -19,8 +20,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                게시판
-                <small>조회페이지</small>
+               	 게시판
+                <small>조회페이지(페이징)</small>
             </h1>
             <ol class="breadcrumb">
                 <li><i class="fa fa-edit"></i> article</li>
@@ -51,6 +52,8 @@
                     <div class="box-footer">
                         <form role="form" method="post">
                             <input type="hidden" name="articleNo" value="${article.articleNo}">
+                            <input type="hidden" name="page" value="${criteria.page}">
+                            <input type="hidden" name="perPageNum" value="${criteria.perPageNum}">
                         </form>
                         <button type="submit" class="btn btn-primary listBtn"><i class="fa fa-list"></i> 목록</button>
                         <div class="pull-right">
@@ -77,16 +80,18 @@
         var formObj = $("form[role='form']");
         console.log(formObj);
         $(".modBtn").on("click", function () {
-            formObj.attr("action", "/article/modify");
+            formObj.attr("action", "/article/paging/modify");
             formObj.attr("method", "get");
             formObj.submit();
         });
         $(".delBtn").on("click", function () {
-           formObj.attr("action", "/article/remove");
+           formObj.attr("action", "/article/paging/remove");
            formObj.submit();
         });
         $(".listBtn").on("click", function () {
-           self.location = "/article/list"
+           formObj.attr("method", "get");
+           formObj.attr("action", "/article/paging/list");
+           formObj.submit();
         });
     });
 </script>

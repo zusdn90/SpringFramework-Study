@@ -20,7 +20,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                게시판
+              	 게시판
                 <small>입력페이지</small>
             </h1>
             <ol class="breadcrumb">
@@ -40,6 +40,10 @@
                         </div>
                         <div class="box-body">
                             <input type="hidden" name="articleNo" value="${article.articleNo}">
+                            <input type="hidden" name="page" value="${searchCriteria.page}">
+                            <input type="hidden" name="perPageNum" value="${searchCriteria.perPageNum}">
+                            <input type="hidden" name="searchType" value="${searchCriteria.searchType}">
+                            <input type="hidden" name="keyword" value="${searchCriteria.keyword}">
                             <div class="form-group">
                                 <label for="title">제목</label>
                                 <input class="form-control" id="title" name="title" placeholder="제목을 입력해주세요" value="${article.title}">
@@ -76,20 +80,31 @@
 </div>
 <!-- ./wrapper -->
 <%@ include file="../include/plugin_js.jsp"%>
+
 <script>
+
     $(document).ready(function () {
         var formObj = $("form[role='form']");
+        
         console.log(formObj);
+        
         $(".modBtn").on("click", function () {
             formObj.submit();
         });
+        
         $(".cancelBtn").on("click", function () {
             history.go(-1);
         });
+        
         $(".listBtn").on("click", function () {
-            self.location = "/article/list"
+            self.location = "/article/paging/search/list?page=${searchCriteria.page}"
+            				+ "&perPageNum=${searchCriteria.perPageNum}"
+            				+ "&searchType=${searchCriteria.searchType}"
+            				+ "&keyword=${searchCriteria.keyword}";
         });
     });
+    
 </script>
+
 </body>
 </html>

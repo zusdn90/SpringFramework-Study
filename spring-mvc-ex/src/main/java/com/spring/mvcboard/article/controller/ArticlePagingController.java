@@ -19,7 +19,7 @@ import com.spring.mvcboard.commons.paging.Criteria;
 import com.spring.mvcboard.commons.paging.PageMaker;
 
 @Controller
-@RequestMapping("/paging")
+@RequestMapping("/article/paging")
 public class ArticlePagingController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ArticlePagingController.class);
@@ -60,7 +60,7 @@ public class ArticlePagingController {
 	 ***************/
 	
 	//페이징 목록 
-	@RequestMapping(value = "/listPaging", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	 public String listPaging(Model model, Criteria criteria) throws Exception {		//해당 메서드에서 뷰(JSP)에 필요한 데이터를 전달하는 용도로 사용되는데 메서드 내에 뷰로 전달할 데이터가 있다면 Model을 파라미터로 선언하는 것이 편리하다.
 		        
 		logger.info("Paging list()...");

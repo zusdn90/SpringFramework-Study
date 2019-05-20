@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.spring.mvcboard.article.domain.ArticleVO;
 import com.spring.mvcboard.commons.paging.Criteria;
+import com.spring.mvcboard.commons.paging.SearchCriteria;
 
 //Controller와 DAO 연결하는 작업을 담당
 public interface ArticleService {
@@ -22,4 +23,9 @@ public interface ArticleService {
 	
     //페이징 처리를 위한 전체 게시글의 갯수
     int countArticles(Criteria criteria) throws Exception;
+    
+    //검색처리
+    List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception;
+	
+    int countSearchArticles (SearchCriteria searchCriteria) throws Exception;
 }
