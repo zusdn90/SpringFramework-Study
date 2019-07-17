@@ -5,5 +5,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.spring.mvcboard.article.domain.ArticleVO"/>
+		<typeAlias type="com.spring.mvcboard.reply.domain.ReplyVO"/>
 	</typeAliases>
 </configuration>

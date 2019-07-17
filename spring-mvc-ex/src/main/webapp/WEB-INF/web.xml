@@ -33,9 +33,6 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
-
-
-	
 	<!-- servlet mapping 설정 -->	
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
@@ -57,5 +54,16 @@
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- 브라우저에서 REST 방식을 사용하기 위함 -->
+	<filter>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>	
+	<filter-mapping>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	
 </web-app>
