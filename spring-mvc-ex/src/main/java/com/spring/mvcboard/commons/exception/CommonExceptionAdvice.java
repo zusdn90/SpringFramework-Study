@@ -16,7 +16,7 @@ public class CommonExceptionAdvice {
 		
 		logger.info(e.toString());
 		
-		//ModelAndView 객체는 하나의 객체에 Model 데이터와 View의 처리를 동시에 처리할 수 있는 객체
+		//ModelAndView 객체는 하나의 객체에 Model 데이터와 View의 처리를 동시에 처리할 수 있는 객체 
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("exception",e);
