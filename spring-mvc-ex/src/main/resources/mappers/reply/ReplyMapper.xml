@@ -46,7 +46,26 @@
 		WHERE reply_no = #{replyNo}
 	</delete>
 	
+	<select id="listPaging" resultMap="ReplyResultMap">
+		SELECT
+			reply_no
+		   ,article_no
+		   ,reply_text
+		   ,reply_writer
+		   ,reg_date
+		   ,update_date
+		FROM tbl_reply
+		WHERE article_no = {#articleNo}
+		ORDER BY reply_no
+		LIMIT #{criteria.pageStart}, #{criteria.perPageNum}
+	</select>
 	
+	<select id="countReplies" resultType="int">
+		SELECT
+			COUNT(article_no)
+		FROM tbl_reply
+		WHERE article_no = #{articleNo}			
+	</select>
 	
 	<!-- 자바 객체의 필드변수명과 DB컬럼명이 불일치할 경우 발생하는 문제를 처리하기 위함 -->
 	<resultMap id="ReplyResultMap" type="ReplyVO">
@@ -57,6 +76,15 @@
 		<result property="replyWriter" column="reply_writer"/>
 		<result property="regDate" column="reg_date"/>
 		<result property="updateDate" column="update_date"/>
+	</resultMap>
+	
+	<resultMap id="ArticleResultMap" type="ArticleVO">
+		<id property="articleNo" column="article_no"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="writer" column="writer"/>
+		<result property="regDate" column="regdate"/>
+		<result property="viewCnt" column="viewcnt"/>
 	</resultMap>
 	
 </mapper>

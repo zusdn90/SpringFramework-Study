@@ -1,12 +1,15 @@
 package com.spring.mvcboard.reply.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.mvcboard.commons.paging.Criteria;
 import com.spring.mvcboard.reply.domain.ReplyVO;
 
 @Repository
@@ -48,6 +51,20 @@ public class ReplyDAOImpl implements ReplyDAO{
 		sqlSession.delete(NAMESPACE + "delete", replyNo);
 	}
 
-	
+	@Override
+	public List<ReplyVO> listPaging(Integer articleNo, Criteria criteria) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		
+		paramMap.put("articleNo", articleNo);
+		paramMap.put("criteria", criteria);
+		
+		return sqlSession.selectList(NAMESPACE + ".listPaging", paramMap);
+	}
+		
+	@Override
+	public int countReply(Integer articleNo) throws Exception {
+		
+	return sqlSession.selectOne(NAMESPACE + ".countReplies", articleNo);
+	}
 
 }
