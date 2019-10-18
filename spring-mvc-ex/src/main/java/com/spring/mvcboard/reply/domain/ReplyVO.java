@@ -5,7 +5,7 @@ import java.util.Date;
 public class ReplyVO {
 
 	private Integer replyNo;
-	private Integer ArticleNo;
+	private Integer articleNo;
 	private String replyText;
 	private String replyWriter;
 	private Date regDate;
@@ -18,10 +18,10 @@ public class ReplyVO {
 		this.replyNo = replyNo;
 	}
 	public Integer getArticleNo() {
-		return ArticleNo;
+		return articleNo;
 	}
 	public void setArticleNo(Integer articleNo) {
-		ArticleNo = articleNo;
+		this.articleNo = articleNo;
 	}
 	public String getReplyText() {
 		return replyText;

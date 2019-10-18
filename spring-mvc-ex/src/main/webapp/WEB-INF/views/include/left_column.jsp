@@ -71,6 +71,17 @@
         		<li class="active"><a href="${path}/article/paging/search/write"><i class="fa fa-pencil"></i> <span>게시글 쓰기</span></a></li>
         		<li><a href="${path}/article/paging/search/list"><i class="fa fa-list"></i> <span>게시글 목록</span></a></li>
 			</ul> 
+		</li>
+		
+		<li class="treeview">
+        	<a href="#"><i class ="fa fa-edit"></i> <span>Ajax 테스트</span>
+        		<span class="pull-right-container">
+					<i class="fa fa-angle-left pull-right"></i>
+				</span>        		
+        	</a>
+        	<ul class="treeview-menu">
+        		<li class="active"><a href="${path}/reply"><i class="fa fa-pencil"></i> <span>Ajax 통신테스트</span></a></li>
+			</ul> 
 		</li>	
 		
       </ul>
