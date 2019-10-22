@@ -4,7 +4,10 @@
 <script src="/js/jquery/jquery-1.11.2.min.js"></script>
 
 <script type="text/javascript">
-	
+	var articleNo = 100;
+	$.getJSON("/replies/all/" + articleNo, function (data) {
+	   console.log(data);
+	});
 </script>
 <body class="hold-transition skin-blue sidebar-mini layout-boxed">
 	<div class="wrapper">

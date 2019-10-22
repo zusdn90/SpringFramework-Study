@@ -33,6 +33,10 @@ public class ReplyController {
 	//댓글 등록 처리 메서드
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestBody ReplyVO replyVO){
+		/*
+		 * @RequestBody : 전송된 JSON데이터를 객체로 변환해주는 애너테이션으로 @ModelAttribute와 유사한 역할을 하지만 JSON에서 사용한다는 점이 차이점이다.
+		 */
+		
 		ResponseEntity<String> entity = null;
 		
 		try{
@@ -47,7 +51,7 @@ public class ReplyController {
 	
 	//댓글 목록 메서드
 	@RequestMapping(value = "/all/{articleNo}", method = RequestMethod.GET)
-	public ResponseEntity<List<ReplyVO>> list(@PathVariable("articleNo") Integer articleNo){
+	public ResponseEntity<List<ReplyVO>> list(@PathVariable("articleNo") Integer articleNo){	//@PathVariable : URI의 경로에서 원하는 데이터를 추출하는 용도로 사용한다.
 		ResponseEntity<List<ReplyVO>> entity = null;
 		
 		try{
@@ -77,6 +81,7 @@ public class ReplyController {
 	}
 	
 	 //댓글 삭제 메서드
+	 @RequestMapping(value= "/{replyNo}", method = RequestMethod.DELETE)
 	 public ResponseEntity<String> delete(@PathVariable("replyNo") Integer replyNo) {
 		 ResponseEntity<String> entity = null;
 		 

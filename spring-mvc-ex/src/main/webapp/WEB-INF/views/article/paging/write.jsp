@@ -4,6 +4,16 @@
 
 <%@ include file="../../include/head.jsp"%>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$(".btn-primary").on("click", function(){
+			self.location = "./list"
+		});
+		
+	});
+</script>
+
 <body class="hold-transition skin-blue sidebar-mini layout-boxed">
 
 <div class="wrapper">

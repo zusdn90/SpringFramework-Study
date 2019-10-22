@@ -40,10 +40,13 @@ public class ArticlePagingSearchController {
     }
 
     @RequestMapping(value = "/write", method = RequestMethod.POST)
-    public String writePOST() throws Exception {
+    public String writePOST(ArticleVO articleVO, RedirectAttributes redirectAttributes) throws Exception {
 
         logger.info("search writePOST() called ...");
-
+        
+        articleService.create(articleVO);
+        redirectAttributes.addFlashAttribute("msg", "regSucces");
+        
         return "redirect:/article/paging/search/list";
     }
 

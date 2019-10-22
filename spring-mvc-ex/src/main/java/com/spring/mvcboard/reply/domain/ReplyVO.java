@@ -47,4 +47,17 @@ public class ReplyVO {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+	
+	@Override
+    public String toString() {
+        return "ReplyVO{" +
+                "replyNo=" + replyNo +
+                ", ArticleNo=" + articleNo +
+                ", replyText='" + replyText + '\'' +
+                ", replyWriter='" + replyWriter + '\'' +
+                ", regDate=" + regDate +
+                ", updateDate=" + updateDate +
+                '}';
+    }
+	
 }
