@@ -40,7 +40,7 @@ public class ReplyController {
 		ResponseEntity<String> entity = null;
 		
 		try{
-			replyService.create(replyVO);
+			replyService.addReply(replyVO);
 			entity = new ResponseEntity<>("regSuccess", HttpStatus.OK);
 		} catch(Exception e){
 			e.printStackTrace();
@@ -55,7 +55,7 @@ public class ReplyController {
 		ResponseEntity<List<ReplyVO>> entity = null;
 		
 		try{
-			entity = new ResponseEntity<>(replyService.list(articleNo), HttpStatus.OK);
+			entity = new ResponseEntity<>(replyService.getReplies(articleNo), HttpStatus.OK);
 		} catch(Exception e){
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -71,7 +71,7 @@ public class ReplyController {
 		
 		try{
 			replyVO.setReplyNo(replyNo);
-			replyService.update(replyVO);
+			replyService.modifyReply(replyVO);
 			entity = new ResponseEntity<>("modSuccess", HttpStatus.OK);
 		}catch (Exception e){
 			e.printStackTrace();
@@ -86,7 +86,7 @@ public class ReplyController {
 		 ResponseEntity<String> entity = null;
 		 
 		 try{
-			 replyService.delete(replyNo);
+			 replyService.removeReply(replyNo);
 			 entity = new ResponseEntity<>("delSuccess", HttpStatus.OK);
 		 }catch (Exception e) {
 			 e.printStackTrace();

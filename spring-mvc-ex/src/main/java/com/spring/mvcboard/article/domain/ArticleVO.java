@@ -10,7 +10,23 @@ public class ArticleVO {
 	private Date regDate;
 	private int viewCnt;
 	
+	private String[] files;
+	private int fileCnt;
 	
+	
+	public String[] getFiles() {
+		return files;
+	}
+	public void setFiles(String[] files) {
+		this.files = files;
+		setFileCnt(files.length);
+	}
+	public int getFileCnt() {
+		return fileCnt;
+	}
+	public void setFileCnt(int fileCnt) {
+		this.fileCnt = fileCnt;
+	}
 	public Integer getArticleNo() {
 		return articleNo;
 	}

@@ -15,9 +15,9 @@ public class LogAdvice {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LogAdvice.class);
 	
-	@Around("execution(* com.doubles.mvcboard..*Controller.*(..))"
-	       + " or execution(* com.doubles.mvcboard..service..*Impl.*(..))"
-	       + " or execution(* com.doubles.mvcboard..persistence..*Impl.*(..))")			//메서드 실행 전체를 앞,뒤로 감싸서 특정한 기능을 실행할 수 있는 강력한 타입의 Advice
+	@Around("execution(* com.spring.mvcboard..*Controller.*(..))"
+	       + " or execution(* com.spring.mvcboard..service..*Impl.*(..))"
+	       + " or execution(* com.spring.mvcboard..persistence..*Impl.*(..))")			//메서드 실행 전체를 앞,뒤로 감싸서 특정한 기능을 실행할 수 있는 강력한 타입의 Advice
 	public Object logPrint(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 		
 		long start = System.currentTimeMillis();

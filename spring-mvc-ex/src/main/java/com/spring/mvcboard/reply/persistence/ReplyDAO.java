@@ -15,4 +15,6 @@ public interface ReplyDAO {
 	//페이징처리 메서드
 	List<ReplyVO> listPaging(Integer articleNo, Criteria criteria) throws Exception;
 	int countReply(Integer articleNo) throws Exception;
+	
+	int getArticleNo(Integer replyNo) throws Exception;
 }
